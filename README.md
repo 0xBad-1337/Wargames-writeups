@@ -5,4 +5,4 @@ https://overthewire.org/wargames/ \
 http://pwnable.kr/# \
 https://crackmes.one/ \
 
-if you don't find a explain.md it means that solution is easily explained and I added it as comments in the solve script
+if you don't find an explain.md it means that solution is easily explained and I added it as comments in the solve script
