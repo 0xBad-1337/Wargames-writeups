@@ -9,7 +9,7 @@ if 'narnia' in lvl:
 	index = int(index)
 	user_password = narnia_passwords[index] 
 	print "use this password: " + user_password
-	os.system('ssh '+lvl+'@narnia.labs.overthewire.org -p 2220')
+	os.system('ssh '+lvl+'@narnia.labs.overthewire.org -p 2226')
 if 'bandit' in lvl:
 	index = re.search('[0-9]+', lvl).group()
 	index = int(index)
