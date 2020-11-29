@@ -6,6 +6,7 @@
 // making "i" global until i find a fix
 // -morla
 int i;
+<<<<<<< HEAD
 //return address: 0x080484a7
 //we can only overwrite 1 byte the blah address
 //10th element on the stack is the return address
@@ -17,6 +18,11 @@ void func(char *b){ //*b is pointer to the address of our input
 	char *blah=b;   //*blah is a pointer pointing to the first value of b which is our input to copy from: 
 					//it also contains the address of b so that's why we see b address 2 times on stakc  
 	char bok[20];  
+=======
+void func(char *b){  
+	char *blah=b;   
+	char bok[20];   
+>>>>>>> 84c96170de7f2c9d1cf4a8f56ed41b53f059b819
 	//int i=0;
 	
 	memset(bok, '\0', sizeof(bok));  
@@ -27,14 +33,20 @@ void func(char *b){ //*b is pointer to the address of our input
 }
 
 int main(int argc, char **argv){
+<<<<<<< HEAD
 	// there is no size check for our argument 
 	if(argc > 1 ) //argc is: 0xffffd7b3 and also $ebp-0x4
+=======
+	 
+	if(argc > 1)
+>>>>>>> 84c96170de7f2c9d1cf4a8f56ed41b53f059b819
 		func(argv[1]);
 	else
 	printf("%s argument\n", argv[0]);
 
 	return 0;
 }
+<<<<<<< HEAD
 
 //hey sem so i noticed after setting a break on print that the 21 value will overwrite 
 // let's say i have this stack: 
@@ -46,3 +58,5 @@ int main(int argc, char **argv){
 // 0xffffd7b7 is our argument 
 
 //the byte after the 20 will overwrite that 0xffffd7b7 and will become 0xffffd742 (it will only overwrite onebyte) 
+=======
+>>>>>>> 84c96170de7f2c9d1cf4a8f56ed41b53f059b819
