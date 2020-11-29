@@ -9,23 +9,26 @@ int i;
 //return address: 0x080484a7
 //we can only overwrite 1 byte the blah address
 //10th element on the stack is the return address
-//address of our input 0xffffd76f adn 0xffffd7a7
-// to print value of a variable p *(char**)($ebp - 4) 
+//10th and 8th element on the stack are our inputs(remember it's *blah and argc)
+//address of our input 0xffffd7b3 and 0xffffd7b3 because blah points to b
+// to print value of a variable: p *(char**)($ebp - 4) 
+
 void func(char *b){ //*b is pointer to the address of our input 
-	char *blah=b;   //*blah is a pointer pointing to the first value of b which is our input to copy from 
-	char bok[20];   //we can overflow the bok variable ebp+0x8
+	char *blah=b;   //*blah is a pointer pointing to the first value of b which is our input to copy from: 
+					//it also contains the address of b so that's why we see b address 2 times on stakc  
+	char bok[20];  
 	//int i=0;
 	
-	memset(bok, '\0', sizeof(bok));
-	for(i=0; blah[i] != '\0'; i++)
+	memset(bok, '\0', sizeof(bok));  
+	for(i=0; blah[i] != '\0'; i++) //the overflow is happening here (it keeps copying until it find a null bytes)
 		bok[i]=blah[i];
 
-	printf("%s\n",bok); // address of bok = 0xffffd5a4
+	printf("%s\n",bok); 
 }
 
 int main(int argc, char **argv){
 	// there is no size check for our argument 
-	if(argc > 1)
+	if(argc > 1 ) //argc is: 0xffffd7b3 and also $ebp-0x4
 		func(argv[1]);
 	else
 	printf("%s argument\n", argv[0]);
@@ -33,9 +36,13 @@ int main(int argc, char **argv){
 	return 0;
 }
 
-// so i tried this run $(python -c 'print 20 * "A" + "\xb3\xd7\xff\xff" + "\xb8\xd5\xff\xff" + "BBBB"')
-// why? because when u check the stack after a brek on printf u notice that only 1 byte will get overwritten with the chars after 41
-// show image 
-// i was thinking that if i retype the correct addresses the BBBB will reach the return address and cause a segfault but that didn't happen
-// weird thing that after a break point on ret i see 41414141 on top of the stack and not the return address
-// so why it didn't cause a segfault 
+//hey sem so i noticed after setting a break on print that the 21 value will overwrite 
+// let's say i have this stack: 
+0xffffd58c:	0x08048550	0xffffd594	0x41414141	0x41414141
+0xffffd59c:	0x41414141	0x41414141	0x41414141	0xffffd7b7
+0xffffd5ac:	0xffffd5b8	0x080484a7	0xffffd7b7	0x00000000
+// 0xffffd7b7 is blah pointing to our argument 
+// 0x080484a7 is EIP 
+// 0xffffd7b7 is our argument 
+
+//the byte after the 20 will overwrite that 0xffffd7b7 and will become 0xffffd742 (it will only overwrite onebyte) 
