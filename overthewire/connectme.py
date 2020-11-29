@@ -3,11 +3,10 @@
 import os
 import re
 lvl = str(raw_input('level: '))
+
 narnia_passwords = ["narnia0","efeidiedae","nairiepecu","vaequeezee","thaenohtai","faimahchiy","neezocaeng","ahkiaziphu","mohthuphog"]
-<<<<<<< HEAD
-behemoth_passwords = ["behemoth0","aesebootiv"]
-=======
->>>>>>> 84c96170de7f2c9d1cf4a8f56ed41b53f059b819
+behemoth_passwords = ["behemoth0","aesebootiv", "eimahquuof"]
+
 if 'narnia' in lvl:
 	index = re.search('[0-9]+', lvl).group()
 	index = int(index)
@@ -31,8 +30,6 @@ if 'behemoth' in lvl:
 	index = int(index)
 	user_password = behemoth_passwords[index] 
 	print "use this password: " + user_password
-<<<<<<< HEAD
 	os.system('ssh '+lvl+'@behemoth.labs.overthewire.org -p 2221')
-=======
 	os.system('ssh '+lvl+'@behemoth.labs.overthewire.org -p 2221')
->>>>>>> 84c96170de7f2c9d1cf4a8f56ed41b53f059b819
+
