@@ -1,0 +1,3 @@
+puts_offset=080497ac
+address_system=0xf7e4c850
+shellcode_env_address = 0xffffddbe

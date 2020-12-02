@@ -1,0 +1,5 @@
+the program is trying to open a file named after it's own pid
+tbh i just opened the program with gdb
+set breakpoint on the cmp instruction and check the value he want to compare with 
+create that file and link it to behemoth5 pass
+it works !!!
