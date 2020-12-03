@@ -5,7 +5,7 @@ import re
 lvl = str(raw_input('level: '))
 
 narnia_passwords = ["narnia0","efeidiedae","nairiepecu","vaequeezee","thaenohtai","faimahchiy","neezocaeng","ahkiaziphu","mohthuphog","eiL5fealae"]
-behemoth_passwords = ["behemoth0","aesebootiv", "eimahquuof","nieteidiel","ietheishei", "aizeeshing"]
+behemoth_passwords = ["behemoth0","aesebootiv", "eimahquuof","nieteidiel","ietheishei", "aizeeshing","mayiroeche"]
 
 if 'narnia' in lvl:
 	index = re.search('[0-9]+', lvl).group()
