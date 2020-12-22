@@ -12,4 +12,4 @@ we can see how **parse_url()** behave in localy(i'm running php7 it's not exploi
 
 ## exploitation:
 
-```http://websec.fr/level25/index.php?page=flag&:458```
+```http://websec.fr/level25/index.php?page=flag&:1337```
