@@ -1,0 +1,15 @@
+convert assembly code into executable
+	gcc -static -nostdlib -o shellcode-elf shellcode.s
+extract .txt section from executable
+	objcopy --dump-section .text=shellcode-raw shellcode-elf
+convert unicode characters to see the bytes
+	cat shellcode-raw | xxd
+see machine code for each instruction
+	objdump -M intel -d shellcode-elf
+display your shellcode like shellstorm one
+	for i in $(objdump -d shellcode-elf -M intel |grep "^ " |cut -f2); do echo -En '\x'$i; done;echo
+calculate how many bytes your shellcode is 
+	wc -c shellcode-elf
+generate shellcode executable with nasm
+	nasm -f elf64 -o shellcode.o shellcode.s
+	ld shellcode.o -o shellcode-elf
