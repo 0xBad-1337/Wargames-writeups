@@ -8,3 +8,4 @@ _start:
 	syscall
 binsh:
 	.string "/home/ctf/catflag"
+	

